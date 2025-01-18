@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagrams Showcase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f2;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #cc0052;
+      text-align: center;
+    }
+
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .box {
+      background-color: #ff80bf;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      max-width: 90%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .close-button {
+      background-color: #cc0052;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .close-button:hover {
+      background-color: #99003d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Diagrams Showcase</h1>
+  <div class="box-container">
+    <div class="box" data-diagram="Class Diagram">Activity Diagram</div>
+    <div class="box" data-diagram="ER Diagram">Sequence Diagram</div>
+    <div class="box" data-diagram="Use Case Diagram">ER Diagram</div>
+    <div class="box" data-diagram="Activity Diagram">Class Diagram</div>
+    <div class="box" data-diagram="Sequence Diagram">Use Case Diagram</div>
+  </div>
+
+  <div class="overlay">
+    <div class="modal">
+      <img id="diagram-image" src="" alt="Diagram">
+      <button class="close-button" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const diagramData = {
+  "Class Diagram": "C:/Users/Vishnu priya/Pictures/Screenshots/Screenshot 2025-01-18 185810.png",
+  "ER Diagram": "C:/Users/Vishnu priya/Pictures/Screenshots/Screenshot 2025-01-18 185816.png",
+  "Use Case Diagram": "C:/Users/Vishnu priya/Pictures/Screenshots/Screenshot 2025-01-18 185822.png",
+  "Activity Diagram": "C:/Users/Vishnu priya/Pictures/Screenshots/Screenshot 2025-01-18 185830.png",
+  "Sequence Diagram": "C:/Users/Vishnu priya/Pictures/Screenshots/Screenshot 2025-01-18 185843.png"
+};
+
+
+    document.querySelectorAll('.box').forEach(box => {
+      box.addEventListener('click', () => {
+        const diagram = box.getAttribute('data-diagram');
+        const imageSrc = diagramData[diagram];
+        document.getElementById('diagram-image').src = imageSrc;
+        document.querySelector('.overlay').style.display = 'flex';
+      });
+    });
+
+    function closeModal() {
+      document.querySelector('.overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
